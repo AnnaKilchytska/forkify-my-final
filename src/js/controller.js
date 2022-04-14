@@ -42,7 +42,6 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function () {
   try {
-    console.log(resultsView);
     // Get searchQuery
     const query = searchView.getQuery();
     if (!query) return;
@@ -76,7 +75,6 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   // Update the recipe view
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
 };
 
@@ -101,13 +99,11 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    console.log(newRecipe);
     // Show loading spinner
     addRecipeView.renderSpinner();
 
     // Upload a new recipe data
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
 
     // Render recipe
     recipeView.render(model.state.recipe);
